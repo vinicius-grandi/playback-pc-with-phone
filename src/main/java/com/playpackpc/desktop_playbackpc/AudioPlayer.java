@@ -5,6 +5,9 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.nio.file.Paths;
+import java.util.function.Supplier;
+
+import static javafx.scene.media.MediaPlayer.Status.*;
 
 
 public class AudioPlayer {
@@ -12,13 +15,22 @@ public class AudioPlayer {
         new JFXPanel();
     }
     private static MediaPlayer mediaPlayer;
+    private static MediaPlayer.Status status = STOPPED;
+
     public static void playSound(String sound){
-        final Media media = new Media(sound);
-        mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setOnEndOfMedia(() -> {
-            System.exit(0);
-        });
-        mediaPlayer.play();
+        Runnable getMedia = () -> {
+            final Media media = new Media(sound);
+            mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.play();
+        };
+        if (status == STOPPED) {
+            getMedia.run();
+            status = PLAYING;
+        } else {
+            mediaPlayer.stop();
+            getMedia.run();
+            status = STOPPED;
+        }
     }
 
     public static void getSoundAndPlay() {

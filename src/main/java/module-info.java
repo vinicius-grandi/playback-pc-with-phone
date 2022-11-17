@@ -1,4 +1,4 @@
-module com.playpackpc.demo {
+module com.playpackpc.desktop_playbackpc {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;
