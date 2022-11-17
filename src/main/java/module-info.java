@@ -4,6 +4,6 @@ module com.playpackpc.demo {
     requires javafx.media;
     requires javafx.swing;
 
-    opens com.playpackpc.demo to javafx.fxml;
-    exports com.playpackpc.demo;
+    opens com.playpackpc.desktop_playbackpc to javafx.fxml;
+    exports com.playpackpc.desktop_playbackpc;
 }

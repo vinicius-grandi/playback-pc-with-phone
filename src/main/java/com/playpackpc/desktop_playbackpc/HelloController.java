@@ -1,4 +1,4 @@
-package com.playpackpc.demo;
+package com.playpackpc.desktop_playbackpc;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
