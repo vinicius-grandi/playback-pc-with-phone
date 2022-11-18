@@ -36,4 +36,20 @@ public class AudioPlayer {
         var file = Paths.get("C:/Users/breno/Downloads/sample.mp3");
         playSound(file.toUri().toString());
     }
+
+    public static void pause() {
+        mediaPlayer.pause();
+    }
+
+    private static void setVolume(double volume) {
+        mediaPlayer.setVolume(mediaPlayer.getVolume() + volume);
+    }
+
+    public static void volumeUp() {
+        setVolume(+0.1);
+    }
+
+    public static void volumeDown() {
+        setVolume(-0.1);
+    }
 }

@@ -10,10 +10,7 @@ public class Server {
 
     // declaring required variables
     private static ServerSocket serverSocket;
-    private static Socket clientSocket;
-    private static InputStreamReader inputStreamReader;
-    private static BufferedReader bufferedReader;
-    private static String message = "";
+    private static boolean isServerEnded = true;
 
     public static void main(String[] args) {
 
@@ -27,36 +24,56 @@ public class Server {
 
         System.out.println("Server started. Listening to the port 4444");
 
-        // we keep listening to the socket's 
-        // input stream until the message
-        // "over" is encountered
-        while (!message.equalsIgnoreCase("over")) {
+        while (isServerEnded) {
             try {
 
-                // the accept method waits for a new client connection
-                // and and returns a individual socket for that connection
-                clientSocket = serverSocket.accept();
+                Socket clientSocket = serverSocket.accept();
 
-                AudioPlayer.getSoundAndPlay();
-                // get the inputstream from socket, which will have 
+                // get the input stream from socket, which will have
                 // the message from the clients
-                inputStreamReader = new InputStreamReader(clientSocket.getInputStream());
-                bufferedReader = new BufferedReader(inputStreamReader);
+                InputStreamReader inputStreamReader = new InputStreamReader(clientSocket.getInputStream());
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
-                // reading the message
-                message = bufferedReader.readLine();
-                if (message.equals("over")) {
-                    System.exit(0);
+                String message = bufferedReader.readLine();
+                String[] commandTuple = message.split("\\|");
+
+                String action = commandTuple[0].toLowerCase();
+
+                Runnable closeAll = () -> {
+                    try {
+                        inputStreamReader.close();
+                        clientSocket.close();
+                    } catch (IOException e) {
+                        System.out.println("Problem in message reading");
+                    }
+                };
+
+                switch (action) {
+                    case "over" -> {
+                        isServerEnded = false;
+                        serverSocket.close();
+                        closeAll.run();
+                        System.exit(0);
+                    }
+                    case "play" -> {
+                        AudioPlayer.getSoundAndPlay();
+                        closeAll.run();
+                    }
+                    case "pause" -> {
+                        AudioPlayer.pause();
+                        closeAll.run();
+                    }
+                    case "volumeup" -> {
+                        AudioPlayer.volumeUp();
+                        closeAll.run();
+                    }
+                    case "volumedown" -> {
+                        AudioPlayer.volumeDown();
+                        closeAll.run();
+                    }
+                    default -> closeAll.run();
                 }
-
-                // printing the message
-                System.out.println(message);
-
-                // finally it is very important
-                // that you close the sockets
-                inputStreamReader.close();
-                clientSocket.close();
-
+                closeAll.run();
             } catch (IOException ex) {
                 System.out.println("Problem in message reading");
             }

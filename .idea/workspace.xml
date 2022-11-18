@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="73c85710-5bdd-4996-860f-3307385115ca" name="Changes" comment="create sound player" />
+    <list default="true" id="73c85710-5bdd-4996-860f-3307385115ca" name="Changes" comment="create sound player">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/playpackpc/desktop_playbackpc/AudioPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/playpackpc/desktop_playbackpc/AudioPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/playpackpc/desktop_playbackpc/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/playpackpc/desktop_playbackpc/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/playpackpc/desktop_playbackpc/Server.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
