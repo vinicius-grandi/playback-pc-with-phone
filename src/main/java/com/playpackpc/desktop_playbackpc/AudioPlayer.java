@@ -5,7 +5,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.nio.file.Paths;
-import java.util.function.Supplier;
 
 import static javafx.scene.media.MediaPlayer.Status.*;
 

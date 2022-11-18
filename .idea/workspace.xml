@@ -7,7 +7,7 @@
     <list default="true" id="73c85710-5bdd-4996-860f-3307385115ca" name="Changes" comment="create sound player">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/playpackpc/desktop_playbackpc/AudioPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/playpackpc/desktop_playbackpc/AudioPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/playpackpc/desktop_playbackpc/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/playpackpc/desktop_playbackpc/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +34,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "extract.method.default.visibility": "public",
-    "introduce.parameter.lambda": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;extract.method.default.visibility&quot;: &quot;public&quot;,
+    &quot;introduce.parameter.lambda&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\breno\IdeaProjects\demo\src\main\resources\com\playpackpc\demo" />

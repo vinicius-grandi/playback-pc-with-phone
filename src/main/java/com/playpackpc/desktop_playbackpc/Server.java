@@ -45,6 +45,9 @@ public class Server {
 
                 // reading the message
                 message = bufferedReader.readLine();
+                if (message.equals("over")) {
+                    System.exit(0);
+                }
 
                 // printing the message
                 System.out.println(message);
