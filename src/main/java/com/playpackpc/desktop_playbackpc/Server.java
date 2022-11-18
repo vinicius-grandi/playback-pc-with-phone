@@ -1,10 +1,11 @@
 package com.playpackpc.desktop_playbackpc;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import org.json.JSONObject;
+
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 
 public class Server {
 
@@ -49,29 +50,25 @@ public class Server {
                 };
 
                 switch (action) {
+                    case "root" -> {
+                        JSONObject directoryContent = AudioFileExplorer.root();
+                        try (ObjectOutputStream out = new ObjectOutputStream(
+                                clientSocket.getOutputStream())
+                        ) {
+                            out.writeObject(directoryContent.toString());
+                        }
+                    }
                     case "over" -> {
                         isServerEnded = false;
                         serverSocket.close();
                         closeAll.run();
                         System.exit(0);
                     }
-                    case "play" -> {
-                        AudioPlayer.getSoundAndPlay();
-                        closeAll.run();
-                    }
-                    case "pause" -> {
-                        AudioPlayer.pause();
-                        closeAll.run();
-                    }
-                    case "volumeup" -> {
-                        AudioPlayer.volumeUp();
-                        closeAll.run();
-                    }
-                    case "volumedown" -> {
-                        AudioPlayer.volumeDown();
-                        closeAll.run();
-                    }
-                    default -> closeAll.run();
+                    case "play" -> AudioPlayer.getSoundAndPlay();
+                    case "pause" -> AudioPlayer.pause();
+                    case "volumeup" -> AudioPlayer.volumeUp();
+                    case "volumedown" -> AudioPlayer.volumeDown();
+                    default -> throw new IllegalStateException("Unexpected value: " + action);
                 }
                 closeAll.run();
             } catch (IOException ex) {
